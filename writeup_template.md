@@ -23,14 +23,23 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+Step 1: Convert image to grayscale
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+[image1]: ./examples/1-grayscale.png "Grayscale"
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+Step 2: Gaussian blur image
 
-![alt text][image1]
+[image1]: ./examples/2-blurred.png "Gaussian blur"
 
+Step 3: Apply Canny edge detection
+Step 4: Mask image
+Step 5: Draw Hough lines
+
+I added a couple of new functions to help extrapolate the line segments.
+
+`sort_lines(img, lines)` takes the line segments returned from `hough_lines()` and returns an array of points respectively for the left and right lanes markers.
+
+`draw_fit_lines` is a replacement for `draw_lines`, which takes the output from `sort_lines` and then uses `cv2.fitLine` to get the best-fit line for each lane marker. The lowest Y value in each array of points is used to calculate the start and end points for the best-fit line.
 
 ### 2. Identify potential shortcomings with your current pipeline
 
