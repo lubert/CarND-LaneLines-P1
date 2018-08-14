@@ -1,12 +1,6 @@
 # **Finding Lane Lines on the Road** 
 
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
 ---
-
-**Finding Lane Lines on the Road**
 
 The goals / steps of this project are the following:
 * Make a pipeline that finds lane lines on the road
@@ -15,25 +9,32 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./examples/1-grayscale.png "Grayscale"
+[image2]: ./examples/2-blurred.png "Gaussian blur"
+[image3]: ./examples/3-canny.png "Canny"
+[image4]: ./examples/4-masked.png "Canny"
+[image5]: ./examples/5-hough.png "Canny"
+[image6]: ./examples/6-merged.png "Canny"
+
 
 ---
 
-### Reflection
+### Pipeline
 
-### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+#### Step 1: Convert image to grayscale
+![alt text][image1]
 
-Step 1: Convert image to grayscale
+#### Step 2: Gaussian blur image
+![alt text][image2]
 
-[image1]: ./examples/1-grayscale.png "Grayscale"
+#### Step 3: Apply Canny edge detection
+![alt text][image3]
 
-Step 2: Gaussian blur image
+#### Step 4: Mask image
+![alt text][image4]
 
-[image1]: ./examples/2-blurred.png "Gaussian blur"
-
-Step 3: Apply Canny edge detection
-Step 4: Mask image
-Step 5: Draw Hough lines
+#### Step 5: Draw Hough lines
+![alt text][image5]
 
 I added a couple of new functions to help extrapolate the line segments.
 
@@ -41,7 +42,10 @@ I added a couple of new functions to help extrapolate the line segments.
 
 `draw_fit_lines` is a replacement for `draw_lines`, which takes the output from `sort_lines` and then uses `cv2.fitLine` to get the best-fit line for each lane marker. The lowest Y value in each array of points is used to calculate the start and end points for the best-fit line.
 
-### 2. Identify potential shortcomings with your current pipeline
+#### Final image:
+![alt text][image6]
+
+### Potential shortcomings
 
 
 One potential shortcoming would be what would happen when ... 
@@ -49,7 +53,7 @@ One potential shortcoming would be what would happen when ...
 Another shortcoming could be ...
 
 
-### 3. Suggest possible improvements to your pipeline
+### Possible improvements
 
 A possible improvement would be to ...
 
